@@ -1,49 +1,43 @@
-			
-arrA = [10, 20, 3, -15];
-arrB = [1, 2, 23, -105];
-arrC = [1, 2, 23, 10000,365,189];
-	
-	// console.log(arrA);
+//ф-ция заполнения радомным числом				
 				
-// arrA
-// 	.filter(function(element){return element>0})
-// 	.forEach(function(element){console.log(element)});
-
-// map - преобразовать каждый элемент
-
-// let mapResult = arrA.map(cbMap);
-
-// function cbMap(element,index,number){
-// 	// console.log(element,index,number);
-// 	return element*10;//преебирает и сразу сохранянет эл-ты *10
-// }	
-//Новый массив с преобразованными данные
-// console.log(mapResult);
-
-console.log(`arrB :  ${arrB}`);
-let mapResultB = arrB.map(cbMap);
-
-function cbMap(element,index,number){
-	// console.log(element,index,number);
-	console.log(`mapResultB :  текущий эл-т: ${element}, следующий эл-т ${arrB[index+1]}`);
-	return index%2 === 0 ? element*10 : element;//если индекс текущего элемента парный
-}	
-//Новый массив с преобразованными данные
-console.log(`mapResultB :  ${mapResultB}`);
-
-console.log(`arrC :  ${arrC}`);
-let mapResultC = arrC.map(cbMap);
-
-function cbMap(element,index,number){
-	// console.log(element,index,number);
-	//если текущий индекс равен длине нашего массива , те index === (arrC.length-1)
-	// будем выводит пустуб строку , т е `` 
-	//иначе ...
-	let nextElement = index === (arrC.length-1) ? `` : `следующий эл-т: ${arrC[index+1]}`;
-	let nextIndex = index === (arrC.length-1) ? `` : `следующий индекс: ${index+1}`;
-	console.log(`mapResultС :  текущий эл-т: ${element}, ${nextElement}`);
-	console.log(`mapResultС :  текущий индекс: ${index}, ${nextIndex}`);
-	return index%2 === 0 ? element*10 : element;//если индекс текущего элемента парный
-}	
-//Новый массив с преобразованными данные
-console.log(`mapResultС :  ${mapResultC}`);
+function generateArray(length=10, min=0, max=100){				
+	// console.log(arguments);			
+	let arr = new Array(10);			
+	for(let i=0; i<arr.length; i++){			
+		arr[i] = Math.floor(Math.random() * (max - min)) + min;		
+	}			
+	return arr;			
+}				
+let arrA = generateArray(10, -10),				
+	arrB = generateArray(12);			
+				
+// console.log(arrA);				
+				
+//ф-ция с использованием forEach				
+function cbForEach(element,index,array ){				
+	console.log(`index ${index} для элемента = ${element}`);			
+				
+}				
+arrA.forEach(cbForEach);				
+// console.log('______');				
+arrA.forEach(cbForEach);				
+				
+//filter метод возвращает элементы массива, для которых условие истинно.				
+// Отсеивание элементов по определенном критерию.				
+//приходят только три эл-та element, индекс, ссылка на массив				
+				
+				
+newarrB = arrB.filter(cbfilter);				
+function cbfilter(element,index,array){				
+	//возвращает только если ответ на вопрос true			
+	// console.log(element,index,array);			
+	//вывод если element > 10 ,то true иначе false			
+	//return element > 10 ? true : false			
+	return element>10;			
+}				
+//созадлся новый массив и сохранятся все значения после перебора , которые отвечают вопросу элемент больше 10				
+console.log(newarrB);				
+				
+				
+//filter возвращает новый массив				
+//!!!!!!!!!!!!!!!!!!!!!!!!!				
