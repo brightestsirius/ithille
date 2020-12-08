@@ -44,7 +44,7 @@ function generateArray(length=10, min=0, max=100){
 	document.write(`<p>'значение массива nomber ' ${element}</p>`);				
 	});//вывод на страницу 1,5,25				
 					
-	number.forEach(				
+	number.f forEach(				
 	function(element,index,number){				
 	document.write(number.join('; '));				
 	});//вывод на страницу 100; 5; 25100; 5; 25100; 5; 25				
