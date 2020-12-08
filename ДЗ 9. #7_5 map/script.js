@@ -10,6 +10,7 @@ arrC = [1, 2, 23, 10000,365,189];
 // 	.forEach(function(element){console.log(element)});
 
 // map - преобразовать каждый элемент
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // let mapResult = arrA.map(cbMap);
 
