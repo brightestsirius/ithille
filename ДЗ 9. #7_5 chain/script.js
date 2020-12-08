@@ -28,5 +28,5 @@ let resultArrAarrA = arrA
 		function(element){
 		document.write(`<div>${element}</div>`);
 		}
-	)
+	);
 // console.log(resultArrAarrA);
