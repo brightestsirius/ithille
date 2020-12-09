@@ -1,18 +1,77 @@
-// Перебирающие методы массивов в js
-// Функции высшего порядка – которые вызывают внутри себя callback-функции
+//Написать функцию getMaxs(args), где args – любое количество массивов.
 
-// forEach – метод перебора массива.
-
-
-// filter метод возвращает элементы массива, для которых условие истинно.
-// Отсеивание элементов по определенном критерию.
+//Функция должна вернуть максимумы всех переданных массивов в виде строки, через разделитель '; '.
 
 
-// map - преобразовать каждый элемент
 
 
-// every, some – отсеять по определенному критерию, возвращает boolean.
-// Функции предикаты – возвращают буленовские значения.
 
-// reduce (сокращать) - метод, который позволяет что-то вычислять
-// и между вычислениями сохранять какое-то промежуточное значение.
+let arrA = [40, 20, 3 ],
+
+    arrB = [10, 20, 350 ],
+
+    arrC = [10, 2000, 350 ];
+
+
+
+    //ф-ция найти max 
+
+    function arrMaxValue(value){
+
+        let max = 0;
+
+        for(let i=0; i<value.length; i++){
+
+            if(value[i]> value[max]){
+
+                max = i;
+
+            }
+
+        }
+
+        return value[max];
+
+    }
+
+
+
+    // console.log(arrMaxValue(arrA));
+
+    // console.log(arrMaxValue(arrB));
+
+    // console.log(arrMaxValue(arrC));
+
+    //можно объеденить все в одну ф-цию 
+
+
+
+    function getMaxs(...args){
+
+        // console.log(arrays);
+
+        
+
+        let arrElement = [];
+
+
+
+        for(let i=0; i<args.length; i++){
+
+            //и для каждого элемента вызываем ф-цию arrMaxValue
+
+            arrElement.push(arrMaxValue(args[i])); 
+
+            //эта ф-ция возвращает макс значение каждого массива 
+
+        }
+
+        // console.log(arrElement);//вывод новый массив с max значениями
+
+        return arrElement.join('; ');
+
+    }
+
+    console.log(getMaxs(arrA,arrB,arrC));
+
+    // getMaxs(arrA,arrB,arrC);//вывыод сразу все массивы
