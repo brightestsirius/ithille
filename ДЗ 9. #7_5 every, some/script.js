@@ -4,6 +4,7 @@
 //some проверка на заданое true false,оты бф к какому то эл
 
 
+
 let arrD = [10,20,30,50];
 //возвращает если все эл массива соответствуют правилу
 let result = arrD.every(function(element){
