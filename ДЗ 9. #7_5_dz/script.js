@@ -18,66 +18,53 @@ var tuesday = [
 var tasks = [monday,tuesday];
 var sumAmount = 0;
 
+tasks = monday.concat(tuesday);
+// console.log(tasks);
+let elementTRS = [];
+function  taskAmount(newArr){
 
-//ф-ция рез-т и вывод Task amount
-function taskAmount(newArr){
-	return newArr
-	//Сконвертировать время потраченное на выполнение задач в часы, вместо минут.
-	.map(function(element){
-	  // console.log(element[1]);
-	  element[1] = element[1]/60;
-	  return element;
-	 })
-	 //Отфильтровать задачи, на выполнение, которых ушло два часа или больше
-	.filter(
-		function(element){
-		  return element[1]>2;
-		} 
-	)
-	.reduce(function(value, element){
-		// console.log(element[1]);
-		return  value.concat(element[1]);
-	},[]); //reduce возвращает только одно значение
-
-   }
-   let taskAmountMonday = taskAmount(monday);
-   let taskAmountTuesday = taskAmount(tuesday);
-   console.log(taskAmountMonday);// вывод [3]
-   console.log(taskAmountTuesday);// вывод [4,3,4]
-   
-
-//Умножить результат на часовую ставку. amount
-function newAmount(newA){
-	// console.log(newA);
-	return newA
-	//Сконвертировать время потраченное на выполнение задач в часы, вместо минут.
-	.map(function(element){
-	//   console.log(element);
-	//   console.log(amount);
-	  return element*=amount;
-	 })
-	 .join(',');//получили строку 
-
-}
-resultNewAmountTuesday = newAmount(taskAmountTuesday);
-console.log(` ${resultNewAmountTuesday}`);//вывод [300]
-resultNewAmountMonday = newAmount(taskAmountMonday);
-console.log(` ${resultNewAmountMonday}`);//вывод [400,300,400]
-
-
-//массив tasks 
-function newArrayTasks (value){
-	console.log(value);
-	let ArrayTask = value
+	let newTaskAmount = newArr
 		.map(function(element){
-		//   console.log(element);
-		  return element;
-		 })
-	
+			element[1] = element[1]/60;
+			return element;
+		})
+		.filter(
+			function(element){
+				// console.log(element[1]);
+				// console.log(element);
+			return element[1]>2;
+			} 
+		)
+		// console.log(newTaskAmount);
+		// let usersWithAge = newTaskAmount
+		.map(function(element){
+			element.push(element[1]*amount)
+			// console.log(resulyTaskAmount); //300,400
+			return element;//вывод новый  массив  с третьим значением
+		})
+		.forEach(function(element){
+			// console.log(element);
+			// console.log(usersTRS);
+			let elementTDs = element
+			.map(function(elA){
+			  return `<td>${elA}</td>`; // преобразовываем каждое значение к виду <td>Write a tutorial</td>
+			});
+		  	// console.log(elementTDs); // получаем массив ['<td>Write a tutorial</td>','<td>3</td>','<td>300</td>']
+		  
+			  let elementTR = `<tr>${elementTDs.join('')}</tr>`; // получаем строку ['<td>Write a tutorial</td>','<td>3</td>','<td>300</td>']
+			//   console.log(userTR);
+			  
+			elementTRS.push(elementTR); // добавляем каждый tr  в один общий массив
+			 
+			  
+			
+		})
+		console.log(elementTRS);
+		document.write(`<table border="1">${elementTRS.join('')}</table>`)
+		}
+taskAmount(tasks);
 
-}
-newArrayTasks(tasks);
-//рисуем таблицу 
+
 
 
 
