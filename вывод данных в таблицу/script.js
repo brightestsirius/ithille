@@ -20,7 +20,7 @@ var sumAmount = 0;
 
 tasks = monday.concat(tuesday);
 // console.log(tasks);
-
+let elementTRS = [];
 function  taskAmount(newArr){
 
 	let newTaskAmount = newArr
@@ -33,7 +33,8 @@ function  taskAmount(newArr){
 				// console.log(element[1]);
 				// console.log(element);
 			return element[1]>2;
-		})
+			} 
+		)
 		// console.log(newTaskAmount);
 		// let usersWithAge = newTaskAmount
 		.map(function(element){
@@ -41,25 +42,29 @@ function  taskAmount(newArr){
 			// console.log(resulyTaskAmount); //300,400
 			return element;//вывод новый  массив  с третьим значением
 		})
-		
-		.map(function(element){
-			//  console.log(element);
-			 let arrayTRS = [];
-			 	// console.log(arrayTRS);
-			let	firsttd = element[0],
-			 	secondtd = element[1],
-				third = element[2];
+		.forEach(function(element){
+			// console.log(element);
+			// console.log(usersTRS);
+			let elementTDs = element
+			.map(function(elA){
+			  return `<td>${elA}</td>`; // преобразовываем каждое значение к виду <td>Write a tutorial</td>
+			});
+		  	// console.log(elementTDs); // получаем массив ['<td>Write a tutorial</td>','<td>3</td>','<td>300</td>']
+		  
+			  let elementTR = `<tr>${elementTDs.join('')}</tr>`; // получаем строку ['<td>Write a tutorial</td>','<td>3</td>','<td>300</td>']
+			//   console.log(userTR);
+			  
+			elementTRS.push(elementTR); // добавляем каждый tr  в один общий массив
+			 
+			  
 			
-			elementTR = `<td>Task name: ${firsttd}</td><td>Taks duration: ${secondtd} hours</td><td>Taks amount: $${third}</td>`;
-			console.log(elementTR);
-			arrayTRS.push(elementTR); //  добавляем каждый tr  в один общий массив
-			
-			
-			return elementTR;
-		
 		})
-		// console.log(arrayTRS);
-		document.write(`<table>${elementTR}</table>`);
-
-}
+		console.log(elementTRS);
+		document.write(`<table border="1">${elementTRS.join('')}</table>`)
+		}
 taskAmount(tasks);
+
+
+
+
+
